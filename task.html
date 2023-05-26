@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+
+        function check(){
+
+            var Name = document.getElementById("name").value
+            var Email = document.getElementById("email").value
+            var Password = document.getElementById("password").value
+            var Cpassword = document.getElementById("cpassword").value
+            var State = document.getElementById("state").value
+
+
+            var Gender = document.getElementById("gendermale").checked
+            var Gender1 = document.getElementById("genderfemale").checked
+            var gender;
+            if(Gender==true)
+            {
+                gender = "Male"
+            }
+            
+            else if(Gender1==true){
+                gender = "Female"
+            }
+            else{
+                gender = null
+            }
+
+            console.log(Name,Email,Password,gender,State)
+
+            var nameCheck = /^[a-zA-Z]+$/
+            var emailCheck = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]{2,3}$/
+            var passCheck = /^[a-zA-Z]+@[0-9]+$/
+
+            /* Name */
+            if(Name==""){
+                alert("Enter your name")
+                return false
+            }
+            if(!Name.match(nameCheck)){
+                alert("Please provide only characters")
+                return false
+            }
+
+            /* Email */
+
+            if(Email==""){
+                alert("Enter your email id")
+                return false
+            }
+            if(!Email.match(emailCheck)){
+                alert("Please provide proper email id")
+                return false
+            }
+
+            /* Password */
+
+            if(Password=="")
+            {
+                alert("enter password")
+                return false
+            }
+            if(Password.length<8)
+            {
+                alert("password must contain 8 characters")
+                return false
+            }
+            if(Password.length>15)
+            {
+                alert("password length must not exceed 15 characters")
+                return false
+            }
+            if(!Password.match(passCheck))
+            {
+                alert("Password must contain characters, special characters, symbols and numbers")
+                return false
+            }
+
+
+            if(Cpassword=="")
+            {
+                alert("enter confirm password")
+                return false
+            }
+            if(Password != Cpassword)
+            {
+                alert("Confirm Password not matched")
+                return false
+            }
+
+            /* State */
+
+            if(State == "")
+            {
+                alert("Choose state")
+                return false
+            }
+            alert("details submitted successfully")
+            return true
+        }
+
+    </script>
+</head>
+<body>
+    <form action="" onsubmit="return check()">
+        <p>
+            <span>Name</span>
+            <input type="text" id="name" placeholder="enter your name">
+        </p>
+        <p>
+            <span>Email</span>
+            <input type="email" id="email" placeholder="enter email">
+        </p>
+        <p>
+            <span>Password</span>
+            <input type="password" id="password" placeholder="enter password">
+        </p>
+        <p>
+            <span>Confirm Password</span>
+            <input type="password" id="cpassword" placeholder="confirm password">
+        </p>
+        <p id="gender">
+            <span>Gender</span>
+            <input type="radio" name="gender" id="gendermale">Male
+            <input type="radio" name="gender" id="genderfemale">Female
+        </p>
+        <p>
+            <span>State</span>
+            <select name="state" id="state">
+                <option value="" disabled="" selected="">Choose state</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Telangana">Telangana</option>
+            </select>
+        </p>
+        <button>Submit</button>
+    </form>
+</body>
+</html>
